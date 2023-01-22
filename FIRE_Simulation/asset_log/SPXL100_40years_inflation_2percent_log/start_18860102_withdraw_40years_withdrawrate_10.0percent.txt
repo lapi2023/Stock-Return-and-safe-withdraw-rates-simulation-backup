@@ -49683,3 +49683,391 @@ Succeeded! assets: 12億9589万5976円 (40年後の資産は129.6倍になりま
 case: 24842, from:1954/01/07, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:08
 Succeeded! assets: 13億1622万353円 (40年後の資産は131.6倍になりました)
 case: 24843, from:1954/01/08, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:08
+Succeeded! assets: 13億4689万2676円 (40年後の資産は134.7倍になりました)
+case: 24844, from:1954/01/09, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+No price in this day.
+case: 24845, from:1954/01/10, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+No price in this day.
+case: 24846, from:1954/01/11, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+Succeeded! assets: 12億9127万1061円 (40年後の資産は129.1倍になりました)
+case: 24847, from:1954/01/12, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+Succeeded! assets: 12億6258万2616円 (40年後の資産は126.3倍になりました)
+case: 24848, from:1954/01/13, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+Succeeded! assets: 12億3092万8384円 (40年後の資産は123.1倍になりました)
+case: 24849, from:1954/01/14, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+Succeeded! assets: 12億435万2867円 (40年後の資産は120.4倍になりました)
+case: 24850, from:1954/01/15, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+Succeeded! assets: 11億5454万8876円 (40年後の資産は115.5倍になりました)
+case: 24851, from:1954/01/16, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+No price in this day.
+case: 24852, from:1954/01/17, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+No price in this day.
+case: 24853, from:1954/01/18, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+Succeeded! assets: 11億6462万1865円 (40年後の資産は116.5倍になりました)
+case: 24854, from:1954/01/19, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:09
+Succeeded! assets: 11億1416万4614円 (40年後の資産は111.4倍になりました)
+case: 24855, from:1954/01/20, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+Succeeded! assets: 10億9998万9042円 (40年後の資産は110.0倍になりました)
+case: 24856, from:1954/01/21, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+Succeeded! assets: 10億9397万9074円 (40年後の資産は109.4倍になりました)
+case: 24857, from:1954/01/22, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+Succeeded! assets: 10億8236万2336円 (40年後の資産は108.2倍になりました)
+case: 24858, from:1954/01/23, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+No price in this day.
+case: 24859, from:1954/01/24, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+No price in this day.
+case: 24860, from:1954/01/25, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+Succeeded! assets: 10億3599万7636円 (40年後の資産は103.6倍になりました)
+case: 24861, from:1954/01/26, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+Succeeded! assets: 10億882万6133円 (40年後の資産は100.9倍になりました)
+case: 24862, from:1954/01/27, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+Succeeded! assets: 10億2323万4906円 (40年後の資産は102.3倍になりました)
+case: 24863, from:1954/01/28, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:10
+Succeeded! assets: 10億2247万8627円 (40年後の資産は102.2倍になりました)
+case: 24864, from:1954/01/29, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+Succeeded! assets: 10億1173万5195円 (40年後の資産は101.2倍になりました)
+case: 24865, from:1954/01/30, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+No price in this day.
+case: 24866, from:1954/01/31, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+No price in this day.
+case: 24867, from:1954/02/01, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+Succeeded! assets: 11億1581万8338円 (40年後の資産は111.6倍になりました)
+case: 24868, from:1954/02/02, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+Succeeded! assets: 11億2967万7171円 (40年後の資産は113.0倍になりました)
+case: 24869, from:1954/02/03, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+Succeeded! assets: 11億1257万7263円 (40年後の資産は111.3倍になりました)
+case: 24870, from:1954/02/04, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+Succeeded! assets: 10億7882万6198円 (40年後の資産は107.9倍になりました)
+case: 24871, from:1954/02/05, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:11
+Succeeded! assets: 10億6004万7489円 (40年後の資産は106.0倍になりました)
+case: 24872, from:1954/02/06, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+No price in this day.
+case: 24873, from:1954/02/07, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+No price in this day.
+case: 24874, from:1954/02/08, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+Succeeded! assets: 10億7202万5871円 (40年後の資産は107.2倍になりました)
+case: 24875, from:1954/02/09, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+Succeeded! assets: 10億8369万3225円 (40年後の資産は108.4倍になりました)
+case: 24876, from:1954/02/10, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+Succeeded! assets: 10億9113万5039円 (40年後の資産は109.1倍になりました)
+case: 24877, from:1954/02/11, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+Succeeded! assets: 11億714万4927円 (40年後の資産は110.7倍になりました)
+case: 24878, from:1954/02/12, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+Succeeded! assets: 10億9552万2002円 (40年後の資産は109.6倍になりました)
+case: 24879, from:1954/02/13, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+No price in this day.
+case: 24880, from:1954/02/14, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+No price in this day.
+case: 24881, from:1954/02/15, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+Succeeded! assets: 11億652万8681円 (40年後の資産は110.7倍になりました)
+case: 24882, from:1954/02/16, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:12
+Succeeded! assets: 11億5157万6333円 (40年後の資産は115.2倍になりました)
+case: 24883, from:1954/02/17, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+Succeeded! assets: 11億4377万414円 (40年後の資産は114.4倍になりました)
+case: 24884, from:1954/02/18, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+Succeeded! assets: 11億4406万9991円 (40年後の資産は114.4倍になりました)
+case: 24885, from:1954/02/19, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+Succeeded! assets: 11億3212万5751円 (40年後の資産は113.2倍になりました)
+case: 24886, from:1954/02/20, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+No price in this day.
+case: 24887, from:1954/02/21, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+No price in this day.
+case: 24888, from:1954/02/22, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+No price in this day.
+case: 24889, from:1954/02/23, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+Succeeded! assets: 11億6708万961円 (40年後の資産は116.7倍になりました)
+case: 24890, from:1954/02/24, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+Succeeded! assets: 11億6700万2204円 (40年後の資産は116.7倍になりました)
+case: 24891, from:1954/02/25, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:13
+Succeeded! assets: 11億5060万9770円 (40年後の資産は115.1倍になりました)
+case: 24892, from:1954/02/26, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+Succeeded! assets: 11億359万1180円 (40年後の資産は110.4倍になりました)
+case: 24893, from:1954/02/27, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+No price in this day.
+case: 24894, from:1954/02/28, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+No price in this day.
+case: 24895, from:1954/03/01, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+Succeeded! assets: 11億2658万4533円 (40年後の資産は112.7倍になりました)
+case: 24896, from:1954/03/02, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+Succeeded! assets: 11億1520万9467円 (40年後の資産は111.5倍になりました)
+case: 24897, from:1954/03/03, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+Succeeded! assets: 11億1596万7544円 (40年後の資産は111.6倍になりました)
+case: 24898, from:1954/03/04, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+Succeeded! assets: 10億9970万7069円 (40年後の資産は110.0倍になりました)
+case: 24899, from:1954/03/05, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+Succeeded! assets: 10億7875万9028円 (40年後の資産は107.9倍になりました)
+case: 24900, from:1954/03/06, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+No price in this day.
+case: 24901, from:1954/03/07, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+No price in this day.
+case: 24902, from:1954/03/08, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:14
+Succeeded! assets: 10億8499万5331円 (40年後の資産は108.5倍になりました)
+case: 24903, from:1954/03/09, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+Succeeded! assets: 10億7299万63円 (40年後の資産は107.3倍になりました)
+case: 24904, from:1954/03/10, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+Succeeded! assets: 10億6305万8109円 (40年後の資産は106.3倍になりました)
+case: 24905, from:1954/03/11, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+Succeeded! assets: 10億3727万6238円 (40年後の資産は103.7倍になりました)
+case: 24906, from:1954/03/12, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+Succeeded! assets: 10億3732万1092円 (40年後の資産は103.7倍になりました)
+case: 24907, from:1954/03/13, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+No price in this day.
+case: 24908, from:1954/03/14, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+No price in this day.
+case: 24909, from:1954/03/15, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+Succeeded! assets: 11億93万8811円 (40年後の資産は110.1倍になりました)
+case: 24910, from:1954/03/16, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+Succeeded! assets: 11億488万3640円 (40年後の資産は110.5倍になりました)
+case: 24911, from:1954/03/17, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:15
+Succeeded! assets: 10億9418万7573円 (40年後の資産は109.4倍になりました)
+case: 24912, from:1954/03/18, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+Succeeded! assets: 10億7366万6963円 (40年後の資産は107.4倍になりました)
+case: 24913, from:1954/03/19, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+Succeeded! assets: 10億5869万4658円 (40年後の資産は105.9倍になりました)
+case: 24914, from:1954/03/20, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+No price in this day.
+case: 24915, from:1954/03/21, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+No price in this day.
+case: 24916, from:1954/03/22, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+Succeeded! assets: 11億2117万9393円 (40年後の資産は112.1倍になりました)
+case: 24917, from:1954/03/23, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+Succeeded! assets: 11億6264万7470円 (40年後の資産は116.3倍になりました)
+case: 24918, from:1954/03/24, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+Succeeded! assets: 11億9121万727円 (40年後の資産は119.1倍になりました)
+case: 24919, from:1954/03/25, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:16
+Succeeded! assets: 12億186万2510円 (40年後の資産は120.2倍になりました)
+case: 24920, from:1954/03/26, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+Succeeded! assets: 11億7310万6638円 (40年後の資産は117.3倍になりました)
+case: 24921, from:1954/03/27, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+No price in this day.
+case: 24922, from:1954/03/28, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+No price in this day.
+case: 24923, from:1954/03/29, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+Succeeded! assets: 11億7571万8777円 (40年後の資産は117.6倍になりました)
+case: 24924, from:1954/03/30, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+Succeeded! assets: 11億6763万1563円 (40年後の資産は116.8倍になりました)
+case: 24925, from:1954/03/31, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+Succeeded! assets: 11億1837万8708円 (40年後の資産は111.8倍になりました)
+case: 24926, from:1954/04/01, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+Succeeded! assets: 10億7646万8852円 (40年後の資産は107.6倍になりました)
+case: 24927, from:1954/04/02, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+Succeeded! assets: 10億6893万7858円 (40年後の資産は106.9倍になりました)
+case: 24928, from:1954/04/03, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+No price in this day.
+case: 24929, from:1954/04/04, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+No price in this day.
+case: 24930, from:1954/04/05, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:17
+Succeeded! assets: 10億6171万3405円 (40年後の資産は106.2倍になりました)
+case: 24931, from:1954/04/06, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+Succeeded! assets: 11億1185万8981円 (40年後の資産は111.2倍になりました)
+case: 24932, from:1954/04/07, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+Succeeded! assets: 10億9353万3229円 (40年後の資産は109.4倍になりました)
+case: 24933, from:1954/04/08, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+Succeeded! assets: 10億4308万5494円 (40年後の資産は104.3倍になりました)
+case: 24934, from:1954/04/09, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+Succeeded! assets: 10億4313万1855円 (40年後の資産は104.3倍になりました)
+case: 24935, from:1954/04/10, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+No price in this day.
+case: 24936, from:1954/04/11, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+No price in this day.
+case: 24937, from:1954/04/12, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+Succeeded! assets: 10億5355万8023円 (40年後の資産は105.4倍になりました)
+case: 24938, from:1954/04/13, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:18
+Succeeded! assets: 10億4072万912円 (40年後の資産は104.1倍になりました)
+case: 24939, from:1954/04/14, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+Succeeded! assets: 10億318万4065円 (40年後の資産は100.3倍になりました)
+case: 24940, from:1954/04/15, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+Succeeded! assets: 9億8814万1182円 (40年後の資産は98.8倍になりました)
+case: 24941, from:1954/04/16, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+No price in this day.
+case: 24942, from:1954/04/17, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+No price in this day.
+case: 24943, from:1954/04/18, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+No price in this day.
+case: 24944, from:1954/04/19, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+Succeeded! assets: 10億1206万2495円 (40年後の資産は101.2倍になりました)
+case: 24945, from:1954/04/20, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+Succeeded! assets: 10億1465万8461円 (40年後の資産は101.5倍になりました)
+case: 24946, from:1954/04/21, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+Succeeded! assets: 10億3486万6187円 (40年後の資産は103.5倍になりました)
+case: 24947, from:1954/04/22, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+Succeeded! assets: 10億2601万1924円 (40年後の資産は102.6倍になりました)
+case: 24948, from:1954/04/23, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:19
+Succeeded! assets: 10億814万886円 (40年後の資産は100.8倍になりました)
+case: 24949, from:1954/04/24, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+No price in this day.
+case: 24950, from:1954/04/25, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+No price in this day.
+case: 24951, from:1954/04/26, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+Succeeded! assets: 10億1647万3493円 (40年後の資産は101.6倍になりました)
+case: 24952, from:1954/04/27, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+Succeeded! assets: 10億4787万3617円 (40年後の資産は104.8倍になりました)
+case: 24953, from:1954/04/28, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+Succeeded! assets: 10億3630万9848円 (40年後の資産は103.6倍になりました)
+case: 24954, from:1954/04/29, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+Succeeded! assets: 9億6415万8523円 (40年後の資産は96.4倍になりました)
+case: 24955, from:1954/04/30, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+Succeeded! assets: 9億5048万1068円 (40年後の資産は95.0倍になりました)
+case: 24956, from:1954/05/01, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+No price in this day.
+case: 24957, from:1954/05/02, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+No price in this day.
+case: 24958, from:1954/05/03, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:20
+Succeeded! assets: 9億9877万7843円 (40年後の資産は99.9倍になりました)
+case: 24959, from:1954/05/04, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+Succeeded! assets: 9億8646万1915円 (40年後の資産は98.6倍になりました)
+case: 24960, from:1954/05/05, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+Succeeded! assets: 9億8578万8765円 (40年後の資産は98.6倍になりました)
+case: 24961, from:1954/05/06, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+Succeeded! assets: 9億4828万110円 (40年後の資産は94.8倍になりました)
+case: 24962, from:1954/05/07, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+Succeeded! assets: 9億2470万4441円 (40年後の資産は92.5倍になりました)
+case: 24963, from:1954/05/08, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+No price in this day.
+case: 24964, from:1954/05/09, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+No price in this day.
+case: 24965, from:1954/05/10, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+Succeeded! assets: 9億6636万7948円 (40年後の資産は96.6倍になりました)
+case: 24966, from:1954/05/11, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+Succeeded! assets: 9億8659万3585円 (40年後の資産は98.7倍になりました)
+case: 24967, from:1954/05/12, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:21
+Succeeded! assets: 9億4540万6431円 (40年後の資産は94.5倍になりました)
+case: 24968, from:1954/05/13, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+Succeeded! assets: 9億7491万1613円 (40年後の資産は97.5倍になりました)
+case: 24969, from:1954/05/14, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+Succeeded! assets: 9億3382万7643円 (40年後の資産は93.4倍になりました)
+case: 24970, from:1954/05/15, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+No price in this day.
+case: 24971, from:1954/05/16, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+No price in this day.
+case: 24972, from:1954/05/17, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+Succeeded! assets: 9億1256万6682円 (40年後の資産は91.3倍になりました)
+case: 24973, from:1954/05/18, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+Succeeded! assets: 9億1226万9142円 (40年後の資産は91.2倍になりました)
+case: 24974, from:1954/05/19, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+Succeeded! assets: 9億3582万4688円 (40年後の資産は93.6倍になりました)
+case: 24975, from:1954/05/20, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+Succeeded! assets: 9億2040万9117円 (40年後の資産は92.0倍になりました)
+case: 24976, from:1954/05/21, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:22
+Succeeded! assets: 8億9218万8133円 (40年後の資産は89.2倍になりました)
+case: 24977, from:1954/05/22, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+No price in this day.
+case: 24978, from:1954/05/23, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+No price in this day.
+case: 24979, from:1954/05/24, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+Succeeded! assets: 9億2705万1116円 (40年後の資産は92.7倍になりました)
+case: 24980, from:1954/05/25, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+Succeeded! assets: 9億4009万3869円 (40年後の資産は94.0倍になりました)
+case: 24981, from:1954/05/26, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+Succeeded! assets: 9億132万928円 (40年後の資産は90.1倍になりました)
+case: 24982, from:1954/05/27, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+Succeeded! assets: 9億2212万5306円 (40年後の資産は92.2倍になりました)
+case: 24983, from:1954/05/28, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+Succeeded! assets: 8億9876万1243円 (40年後の資産は89.9倍になりました)
+case: 24984, from:1954/05/29, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+No price in this day.
+case: 24985, from:1954/05/30, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+No price in this day.
+case: 24986, from:1954/05/31, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+No price in this day.
+case: 24987, from:1954/06/01, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:23
+Succeeded! assets: 9億726万3329円 (40年後の資産は90.7倍になりました)
+case: 24988, from:1954/06/02, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+Succeeded! assets: 9億1270万6231円 (40年後の資産は91.3倍になりました)
+case: 24989, from:1954/06/03, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+Succeeded! assets: 9億1661万2902円 (40年後の資産は91.7倍になりました)
+case: 24990, from:1954/06/04, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+Succeeded! assets: 9億2520万7238円 (40年後の資産は92.5倍になりました)
+case: 24991, from:1954/06/05, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+No price in this day.
+case: 24992, from:1954/06/06, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+No price in this day.
+case: 24993, from:1954/06/07, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+Succeeded! assets: 9億4229万4608円 (40年後の資産は94.2倍になりました)
+case: 24994, from:1954/06/08, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+Succeeded! assets: 10億5614万8540円 (40年後の資産は105.6倍になりました)
+case: 24995, from:1954/06/09, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+Succeeded! assets: 10億9183万9889円 (40年後の資産は109.2倍になりました)
+case: 24996, from:1954/06/10, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:24
+Succeeded! assets: 10億5687万9113円 (40年後の資産は105.7倍になりました)
+case: 24997, from:1954/06/11, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+Succeeded! assets: 10億1248万3667円 (40年後の資産は101.2倍になりました)
+case: 24998, from:1954/06/12, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+No price in this day.
+case: 24999, from:1954/06/13, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+No price in this day.
+case: 25000, from:1954/06/14, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+Succeeded! assets: 10億5760万6284円 (40年後の資産は105.8倍になりました)
+case: 25001, from:1954/06/15, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+Succeeded! assets: 10億2011万604円 (40年後の資産は102.0倍になりました)
+case: 25002, from:1954/06/16, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+Succeeded! assets: 9億8273万1077円 (40年後の資産は98.3倍になりました)
+case: 25003, from:1954/06/17, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+Succeeded! assets: 9億9791万6809円 (40年後の資産は99.8倍になりました)
+case: 25004, from:1954/06/18, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:25
+Succeeded! assets: 9億8363万83円 (40年後の資産は98.4倍になりました)
+case: 25005, from:1954/06/19, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+No price in this day.
+case: 25006, from:1954/06/20, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+No price in this day.
+case: 25007, from:1954/06/21, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+Succeeded! assets: 9億9527万9796円 (40年後の資産は99.5倍になりました)
+case: 25008, from:1954/06/22, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+Succeeded! assets: 9億9166万5700円 (40年後の資産は99.2倍になりました)
+case: 25009, from:1954/06/23, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+Succeeded! assets: 9億8334万8615円 (40年後の資産は98.3倍になりました)
+case: 25010, from:1954/06/24, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+Succeeded! assets: 9億6107万7542円 (40年後の資産は96.1倍になりました)
+case: 25011, from:1954/06/25, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+Succeeded! assets: 9億7192万2727円 (40年後の資産は97.2倍になりました)
+case: 25012, from:1954/06/26, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+No price in this day.
+case: 25013, from:1954/06/27, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+No price in this day.
+case: 25014, from:1954/06/28, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+Succeeded! assets: 9億8413万839円 (40年後の資産は98.4倍になりました)
+case: 25015, from:1954/06/29, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:26
+Succeeded! assets: 9億5658万9955円 (40年後の資産は95.7倍になりました)
+case: 25016, from:1954/06/30, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+Succeeded! assets: 9億9841万6956円 (40年後の資産は99.8倍になりました)
+case: 25017, from:1954/07/01, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+Succeeded! assets: 9億9925万9754円 (40年後の資産は99.9倍になりました)
+case: 25018, from:1954/07/02, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+Succeeded! assets: 9億3135万9646円 (40年後の資産は93.1倍になりました)
+case: 25019, from:1954/07/03, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+No price in this day.
+case: 25020, from:1954/07/04, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+No price in this day.
+case: 25021, from:1954/07/05, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+No price in this day.
+case: 25022, from:1954/07/06, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+Succeeded! assets: 8億6897万6883円 (40年後の資産は86.9倍になりました)
+case: 25023, from:1954/07/07, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+Succeeded! assets: 8億6328万9653円 (40年後の資産は86.3倍になりました)
+case: 25024, from:1954/07/08, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+Succeeded! assets: 8億6358万3030円 (40年後の資産は86.4倍になりました)
+case: 25025, from:1954/07/09, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:27
+Succeeded! assets: 8億3180万3442円 (40年後の資産は83.2倍になりました)
+case: 25026, from:1954/07/10, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+No price in this day.
+case: 25027, from:1954/07/11, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+No price in this day.
+case: 25028, from:1954/07/12, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+Succeeded! assets: 8億6611万9123円 (40年後の資産は86.6倍になりました)
+case: 25029, from:1954/07/13, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+Succeeded! assets: 8億8071万8377円 (40年後の資産は88.1倍になりました)
+case: 25030, from:1954/07/14, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+Succeeded! assets: 8億6936万397円 (40年後の資産は86.9倍になりました)
+case: 25031, from:1954/07/15, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+Succeeded! assets: 8億5390万9841円 (40年後の資産は85.4倍になりました)
+case: 25032, from:1954/07/16, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+Succeeded! assets: 8億7515万7446円 (40年後の資産は87.5倍になりました)
+case: 25033, from:1954/07/17, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+No price in this day.
+case: 25034, from:1954/07/18, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+No price in this day.
+case: 25035, from:1954/07/19, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:28
+Succeeded! assets: 9億2958万8670円 (40年後の資産は93.0倍になりました)
+case: 25036, from:1954/07/20, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:29
+Succeeded! assets: 9億5502万566円 (40年後の資産は95.5倍になりました)
+case: 25037, from:1954/07/21, initial asset: 1000万円, withdraw_rate: 10.0%, 20:04:29
