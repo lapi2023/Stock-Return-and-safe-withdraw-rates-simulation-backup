@@ -22,7 +22,10 @@ def test(a = 1):
         return a, 2
 
 if __name__ == '__main__':
-    bgr = cv2.imread(out_dir + "SPX_return_by_invest_years_watermark.png")
-    decoder = WatermarkDecoder('bytes')
-    watermark = decoder.decode(bgr, 'dwtDct')
-    print(watermark.decode('utf-8'))
+
+    for i, j in [(1, 2), (2, 3), (99, 100)]:
+        print(i, j)
+
+
+
+
