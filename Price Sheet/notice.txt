@@ -1,0 +1,11 @@
+
+
+stocks(^SPX):
+from https://stooq.com/q/d/?s=%5ESPX+
+1914/8/1-1914/12/11 is not available, expense ratio is minused(0.0968％)
+
+SPXL: expense ratio(1%) is minused
+
+bonds:
+until 2022/04: https://github.com/thepoorswiss/swr-calculator
+since 2022/5: https://finance.yahoo.com/quote/GOVT/history?p=GOVT
