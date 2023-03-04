@@ -1,4 +1,5 @@
 import codecs
+import datetime
 import math
 import time
 
@@ -10,6 +11,7 @@ import matplotlib.ticker as mtick
 import tqdm
 import cv2
 from imwatermark import WatermarkDecoder
+from stock_calculation import utils
 
 temp_dir = "temp\\"
 test_file = temp_dir+r"test.txt"
@@ -22,7 +24,11 @@ def test(a = 1):
         return a, 2
 
 if __name__ == '__main__':
-    bgr = cv2.imread(out_dir + "SPX_return_by_invest_years_watermark.png")
-    decoder = WatermarkDecoder('bytes')
-    watermark = decoder.decode(bgr, 'dwtDct')
-    print(watermark.decode('utf-8'))
+
+    df = utils.get_dataframe_1886_daily("SPX", 5, 25)
+
+    print(df.loc[datetime.datetime(2023,1,13), "SMA25"])
+    print(df.head())
+
+
+
