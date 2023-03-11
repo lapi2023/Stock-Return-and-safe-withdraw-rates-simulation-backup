@@ -6,9 +6,10 @@ import os
 import statistics
 import sys
 import time
+from concurrent.futures import ProcessPoolExecutor
+
 import cnum
 import joblib
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 import tqdm as tqdm
 from dateutil.relativedelta import relativedelta
 
@@ -45,15 +46,14 @@ def get_index(sheet, datetime: datetime):
 
 
 def canbe_simulated(sheet, startdate: datetime, withdraw_years):
-
     if startdate + relativedelta(years=withdraw_years) > sheet[-1][0]:
 
         return False  # 開始日付+継続年数(withdraw_years)のレコードがシートにないため-1を返して終了
     else:
         return True
 
-def return_calculatable_startdate(sheet_tuple, startdate):
 
+def return_calculatable_startdate(sheet_tuple, startdate):
     if get_index(sheet_tuple, startdate) >= 0:
         return startdate
     else:
@@ -71,6 +71,8 @@ def return_calculatable_startdate(sheet_tuple, startdate):
                 return current_date_temp
     if get_index(sheet_tuple, current_date_temp) < 0:
         print('Error73: date not found! {}, {}'.format(current_date_temp, startdate), file=sys.stderr)
+
+
 def save_to_dump(dump_dir, **kwargs):  # "withdraw_rates" = withdrawrates  ([])
     for key in kwargs.keys():
         joblib.dump(kwargs[key], dump_dir + key + ".dump")
@@ -94,7 +96,8 @@ def load_dump(dump_dir, *args):
     return loaded_dic
 
 
-def simulate_once_a_year_two_assets_single(sheet1, percentage1, sheet2, percentage2, startdate: datetime, withdraw_years,
+def simulate_once_a_year_two_assets_single(sheet1, percentage1, sheet2, percentage2, startdate: datetime,
+                                           withdraw_years,
                                            initial_assets, withdraw_rate, inflation_rate=0.02):
     # 条件：最初の一カ月経過時点で初めてwithdraw_rateで資産を取り出す(最初の取り出しは行わない）
     current_asset1 = int(initial_assets * percentage1)
@@ -134,8 +137,10 @@ def simulate_once_a_year_two_assets_single(sheet1, percentage1, sheet2, percenta
         growth_rate2 = (current_price2 - last_price2) / last_price2
 
         # withdraw_asset×Percentageに従って各資産を取り出す
-        current_asset1 = int((current_asset1 * (1 + growth_rate1) - withdraw_asset * percentage1) * (1 - inflation_rate))
-        current_asset2 = int((current_asset2 * (1 + growth_rate2) - withdraw_asset * percentage2) * (1 - inflation_rate))
+        current_asset1 = int(
+            (current_asset1 * (1 + growth_rate1) - withdraw_asset * percentage1) * (1 - inflation_rate))
+        current_asset2 = int(
+            (current_asset2 * (1 + growth_rate2) - withdraw_asset * percentage2) * (1 - inflation_rate))
         if current_asset1 < 0:
             current_asset2 += current_asset1
             current_asset1 = 0
@@ -230,6 +235,7 @@ def simulate_once_a_year_two_assets_multi(sheet1, percentage1, sheet2, percentag
 
     return multi_results, simulated_count, success_count, asset_max_final, asset_best_startdate, asset_min_final, asset_worst_startdate
 
+
 def generate_simulation_datasets_two_assets(sheet1_tuple, percentage1, sheet2_tuple, percentage2, startdate: datetime,
                                             enddate: datetime, withdraw_years, initial_assets,
                                             inflation_rate=0.02, dump_dir="", out_dir="", asset_log_dir=""):
@@ -271,10 +277,11 @@ def generate_simulation_datasets_two_assets(sheet1_tuple, percentage1, sheet2_tu
             iterate_start = int((withdraw_rates[-1] + 0.0025) * 10000)
 
         for i in range(iterate_start, 625, 25):
-            multi_results, simulated_count, success_count, asset_max_final, asset_best_startdate, asset_min_final, asset_worst_startdate = simulate_once_a_year_two_assets_multi(sheet1_tuple, percentage1, sheet2_tuple, percentage2, startdate,
-                                                  enddate, withdraw_years, initial_assets, i / 10000, inflation_rate,
-                                                  asset_log_dir
-                                                  )
+            multi_results, simulated_count, success_count, asset_max_final, asset_best_startdate, asset_min_final, asset_worst_startdate = simulate_once_a_year_two_assets_multi(
+                sheet1_tuple, percentage1, sheet2_tuple, percentage2, startdate,
+                enddate, withdraw_years, initial_assets, i / 10000, inflation_rate,
+                asset_log_dir
+            )
             withdraw_rates.append(i / 10000)
             success_rates.append(success_count / simulated_count)
             multi_results_list.append(multi_results)
@@ -293,7 +300,8 @@ def generate_simulation_datasets_two_assets(sheet1_tuple, percentage1, sheet2_tu
             asset_min_final_list.append(asset_min_final)
             asset_worst_startdate_list.append(asset_worst_startdate)
 
-            save_to_dump(dump_dir, withdraw_rates=withdraw_rates, success_rates=success_rates, multi_results_list=multi_results_list,
+            save_to_dump(dump_dir, withdraw_rates=withdraw_rates, success_rates=success_rates,
+                         multi_results_list=multi_results_list,
                          assets_avg_list=assets_avg_list, assets_min_list=assets_min_list,
                          assets_max_list=assets_max_list,
                          assets_med_list=assets_med_list, asset_max_final_list=asset_max_final_list,
@@ -302,7 +310,8 @@ def generate_simulation_datasets_two_assets(sheet1_tuple, percentage1, sheet2_tu
                          asset_worst_startdate_list=asset_worst_startdate_list)
 
     # ファイルへの出力
-    save_results_to_txt(out_dir, withdraw_rates=withdraw_rates, success_rates=success_rates, multi_results_list=multi_results_list,
+    save_results_to_txt(out_dir, withdraw_rates=withdraw_rates, success_rates=success_rates,
+                        multi_results_list=multi_results_list,
                         assets_avg_list=assets_avg_list, assets_min_list=assets_min_list,
                         assets_max_list=assets_max_list,
                         assets_med_list=assets_med_list, asset_max_final_list=asset_max_final_list,

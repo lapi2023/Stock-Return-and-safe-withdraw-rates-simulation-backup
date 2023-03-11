@@ -4,22 +4,23 @@ import datetime
 import os
 import sys
 import time
+
 import cnum
 import joblib
 import tqdm as tqdm
 from dateutil.relativedelta import relativedelta
 
-
 SPXL_Sheets = r"Price Sheet\simulated_SPXL_1886-2023.csv"
 SPX_Sheets = r"Price Sheet\simulated_SPX_funds_1886-2023_daily.csv"
 SSO_Sheets = r"Price Sheet\simulated_SSO_1886-2023.csv"
-BONDS_Sheets = "" # not used
-CASH_Sheets = "" # not used
+BONDS_Sheets = ""  # not used
+CASH_Sheets = ""  # not used
 
 initial_asset = 10000
 PJ_dir = "Return_Simulation/Return_Simulation_Timing/"
 asset_log_dir = PJ_dir + "asset_log/"
 inflation_rate = 0
+
 
 def readCSV(path):
     list = []
@@ -29,14 +30,16 @@ def readCSV(path):
             # print([datetime.datetime.strptime(row['date'], "%Y/%m/%d"), float(row['SPXL'])])
             list.append(tuple([datetime.datetime.strptime(row['date'], "%Y/%m/%d"), float(row['price'])]))
     return tuple(list)
-def calculate_return_lump_sum_investment_single_year(sheet_tuple, startdate: datetime, invest_years, initial_asset, inflation_rate=0.02):
+
+
+def calculate_return_lump_sum_investment_single_year(sheet_tuple, startdate: datetime, invest_years, initial_asset,
+                                                     inflation_rate=0.02):
     # 条件：最初の一カ月経過時点で初めてwithdraw_rateで資産を取り出す(最初の取り出しは行わない）
     enddate = startdate + relativedelta(years=invest_years)
     if get_index(sheet_tuple, startdate) < 0:
         return None, None
     while get_index(sheet_tuple, enddate) < 0:
         enddate -= relativedelta(days=1)
-
 
     start_price = sheet_tuple[get_index(sheet_tuple, startdate)][1]
     end_price = sheet_tuple[get_index(sheet_tuple, enddate)][1]
@@ -45,11 +48,15 @@ def calculate_return_lump_sum_investment_single_year(sheet_tuple, startdate: dat
     end_asset = int(initial_asset * (1 + growth_rate) * (1 - inflation_rate))
     return int(end_asset), growth_rate
 
-def make_dir(dir = ""):
+
+def make_dir(dir=""):
     if dir != "":
         if not os.path.exists(dir):
             os.makedirs(dir)
-def calculate_return_dollar_cost_averaging_monthly(ticker, startdate, enddate, invest_years, monthly_invest_amount, inflation_rate=0, asset_log_dir = ""):
+
+
+def calculate_return_dollar_cost_averaging_monthly(ticker, startdate, enddate, invest_years, monthly_invest_amount,
+                                                   inflation_rate=0, asset_log_dir=""):
     def getTuple(ticker):
         match ticker:
             case "SPXL":
@@ -65,6 +72,7 @@ def calculate_return_dollar_cost_averaging_monthly(ticker, startdate, enddate, i
             case _:
                 print("Ticker not definded!")
                 return None
+
     def return_calculatable_startdate(sheet_tuple, startdate):
         if get_index(sheet_tuple, startdate) >= 0:
             return startdate
@@ -104,13 +112,15 @@ def calculate_return_dollar_cost_averaging_monthly(ticker, startdate, enddate, i
         invested_months += 1
     return invested_amount, asset, invested_months
 
-def generate_dumpfiles_dollar_cost_averaging_monthly(ticker, startdate: datetime, enddate, invest_years, monthly_invest_amount,
-                                                     inflation_rate = 0, dump_dir = "", out_dir = "", asset_log_dir = ""):
 
+def generate_dumpfiles_dollar_cost_averaging_monthly(ticker, startdate: datetime, enddate, invest_years,
+                                                     monthly_invest_amount,
+                                                     inflation_rate=0, dump_dir="", out_dir="", asset_log_dir=""):
     make_dir(dump_dir)
     make_dir(out_dir)
-    invested_amount, asset, invested_months =\
-        calculate_return_dollar_cost_averaging_monthly(ticker, startdate, enddate, invest_years, monthly_invest_amount, inflation_rate, asset_log_dir)
+    invested_amount, asset, invested_months = \
+        calculate_return_dollar_cost_averaging_monthly(ticker, startdate, enddate, invest_years, monthly_invest_amount,
+                                                       inflation_rate, asset_log_dir)
 
     if dump_dir != "":
         save_to_dump(dump_dir, asset_result_list=asset_result_list,
@@ -119,10 +129,11 @@ def generate_dumpfiles_dollar_cost_averaging_monthly(ticker, startdate: datetime
                      )
     if out_dir != "":
         save_results_to_txt(out_dir, asset_result_list=asset_result_list,
-                     asset_list=asset_list,
-                     price_growth_rate_list=price_growth_rate_list
+                            asset_list=asset_list,
+                            price_growth_rate_list=price_growth_rate_list
                             )
     return asset_result_list, asset_list, price_growth_rate_list
+
 
 def get_index(sheet, datetime: datetime):
     index = 0
@@ -135,18 +146,24 @@ def get_index(sheet, datetime: datetime):
         return -1
     else:
         return index
+
+
 def canbe_simulated_yearly(sheet, startdate: datetime, invest_years):
     if startdate + relativedelta(years=invest_years) > sheet[-1][0]:
         return False  # 開始日付+継続年数(invest_years)のレコードがシートにないため-1を返して終了
     else:
         return True
 
+
 def canbe_simulated_monthly(sheet, startdate: datetime, months):
     if startdate + relativedelta(months=months) > sheet[-1][0]:
         return False  # 開始日付+継続年数(invest_years)のレコードがシートにないため-1を返して終了
     else:
         return True
-def calculate_return_lump_sum_investment_multi_years(sheet_tuple, startdate: datetime, enddate: datetime, invest_years, initial_asset, inflation_rate=0.02, asset_log_dir =""):
+
+
+def calculate_return_lump_sum_investment_multi_years(sheet_tuple, startdate: datetime, enddate: datetime, invest_years,
+                                                     initial_asset, inflation_rate=0.02, asset_log_dir=""):
     # initialize
     if asset_log_dir != "":
         if not os.path.exists(asset_log_dir):
@@ -157,17 +174,21 @@ def calculate_return_lump_sum_investment_multi_years(sheet_tuple, startdate: dat
             os.remove(asset_logfile)
     current_date = startdate
     day_count = 0
-    asset_result_list = [] #何年から始めて資産がどのくらい残ったか
+    asset_result_list = []  # 何年から始めて資産がどのくらい残ったか
     asset_list = []
     price_growth_rate_list = []
     # end initialization
 
-    while canbe_simulated_yearly(sheet_tuple, current_date, invest_years) and (current_date + relativedelta(years=invest_years) < enddate):
+    while canbe_simulated_yearly(sheet_tuple, current_date, invest_years) and (
+            current_date + relativedelta(years=invest_years) < enddate):
         day_count += 1
-        print("case: {}, from:{}, initial asset: {}円, {}".format(day_count, current_date.strftime("%Y/%m/%d"), cnum.jp(int(initial_asset)),
-                                                                    datetime.datetime.fromtimestamp(
-                time.time()).strftime("%H:%M:%S")), file=codecs.open(asset_logfile, "a", "utf-8"))
-        asset, growth_rate = calculate_return_lump_sum_investment_single_year(sheet_tuple, current_date, invest_years, initial_asset, inflation_rate)
+        print("case: {}, from:{}, initial asset: {}円, {}".format(day_count, current_date.strftime("%Y/%m/%d"),
+                                                                  cnum.jp(int(initial_asset)),
+                                                                  datetime.datetime.fromtimestamp(
+                                                                      time.time()).strftime("%H:%M:%S")),
+              file=codecs.open(asset_logfile, "a", "utf-8"))
+        asset, growth_rate = calculate_return_lump_sum_investment_single_year(sheet_tuple, current_date, invest_years,
+                                                                              initial_asset, inflation_rate)
         if asset is not None:
             asset_result_list.append([current_date, invest_years, asset])
             asset_list.append(asset)
@@ -180,9 +201,11 @@ def calculate_return_lump_sum_investment_multi_years(sheet_tuple, startdate: dat
         current_date += relativedelta(days=1)
 
     return asset_result_list, asset_list, price_growth_rate_list
-def generate_simulation_datasets_lump_sum_investment(sheet_tuple, startdate: datetime, enddate, invest_years, initial_asset,
-                                                     inflation_rate = 0.02, dump_dir = "", out_dir = "", asset_log_dir = ""):
 
+
+def generate_simulation_datasets_lump_sum_investment(sheet_tuple, startdate: datetime, enddate, invest_years,
+                                                     initial_asset,
+                                                     inflation_rate=0.02, dump_dir="", out_dir="", asset_log_dir=""):
     if dump_dir != "":
         if not os.path.exists(dump_dir):
             os.makedirs(dump_dir)
@@ -193,8 +216,9 @@ def generate_simulation_datasets_lump_sum_investment(sheet_tuple, startdate: dat
         if not os.path.exists(asset_log_dir):
             os.makedirs(asset_log_dir)
 
-    asset_result_list, asset_list, price_growth_rate_list =\
-        calculate_return_lump_sum_investment_multi_years(sheet_tuple, startdate, enddate, invest_years, initial_asset, inflation_rate, asset_log_dir)
+    asset_result_list, asset_list, price_growth_rate_list = \
+        calculate_return_lump_sum_investment_multi_years(sheet_tuple, startdate, enddate, invest_years, initial_asset,
+                                                         inflation_rate, asset_log_dir)
 
     if dump_dir != "":
         save_to_dump(dump_dir, asset_result_list=asset_result_list,
@@ -203,18 +227,23 @@ def generate_simulation_datasets_lump_sum_investment(sheet_tuple, startdate: dat
                      )
     if out_dir != "":
         save_results_to_txt(out_dir, asset_result_list=asset_result_list,
-                     asset_list=asset_list,
-                     price_growth_rate_list=price_growth_rate_list
+                            asset_list=asset_list,
+                            price_growth_rate_list=price_growth_rate_list
                             )
     return asset_result_list, asset_list, price_growth_rate_list
+
 
 def save_to_dump(dump_dir, **kwargs):  # "withdraw_rates" = withdrawrates  ([])
     for key in kwargs.keys():
         joblib.dump(kwargs[key], dump_dir + key + ".dump")
         # joblib.dump(withdraw_rates, dump_dir + "withdraw_rates.dump")
+
+
 def save_results_to_txt(out_dir, **kwargs):
     for key in kwargs.keys():
         print(kwargs[key], file=codecs.open(out_dir + "{}.txt".format(key), "w", "utf-8"))
+
+
 def load_dump(dump_dir, *args):
     loaded_dic = {}
     for filename in args:
@@ -225,6 +254,8 @@ def load_dump(dump_dir, *args):
         else:
             loaded_dic[filename] = []
     return loaded_dic
+
+
 if __name__ == '__main__':
     starttime = time.time()
     print("start: {}".format(datetime.datetime.fromtimestamp(starttime).strftime("%H:%M:%S")))
@@ -248,24 +279,31 @@ if __name__ == '__main__':
     # SPX Simulation
     for years in tqdm.tqdm([1, 5, 10, 20, 30, 40, 50]):
         generate_simulation_datasets_lump_sum_investment(SPX_tuple, startdate, enddate, years, 10000000, inflation_rate,
-                                     "Return_Simulation\\dump\\SPX100_{}years_inflation_{}percent_dump\\".format(years, inflation_rate),
-                                     "Return_Simulation\\output\\SPX100_{}years_inflation_{}percent_output\\".format(years, inflation_rate),
+                                                         "Return_Simulation\\dump\\SPX100_{}years_inflation_{}percent_dump\\".format(
+                                                             years, inflation_rate),
+                                                         "Return_Simulation\\output\\SPX100_{}years_inflation_{}percent_output\\".format(
+                                                             years, inflation_rate),
                                                          asset_log_dir
                                                          )
 
     # SSO Simulation
     for years in tqdm.tqdm([1, 5, 10, 20, 30, 40, 50]):
         generate_simulation_datasets_lump_sum_investment(SSO_tuple, startdate, enddate, years, 10000000, inflation_rate,
-                                     "Return_Simulation\\dump\\SSO100_{}years_inflation_0percent_dump\\".format(years, inflation_rate),
-                                     "Return_Simulation\\output\\SSO100_{}years_inflation_0percent_output\\".format(years, inflation_rate),
+                                                         "Return_Simulation\\dump\\SSO100_{}years_inflation_0percent_dump\\".format(
+                                                             years, inflation_rate),
+                                                         "Return_Simulation\\output\\SSO100_{}years_inflation_0percent_output\\".format(
+                                                             years, inflation_rate),
                                                          asset_log_dir
                                                          )
 
     # SPXL Simulation
     for years in tqdm.tqdm([1, 5, 10, 20, 30, 40, 50]):
-        generate_simulation_datasets_lump_sum_investment(SPXL_tuple, startdate, enddate, years, 10000000, inflation_rate,
-                                     "Return_Simulation\\dump\\SPXL100_{}years_inflation_0percent_dump\\".format(years, inflation_rate),
-                                     "Return_Simulation\\output\\SPXL100_{}years_inflation_0percent_output\\".format(years, inflation_rate),
+        generate_simulation_datasets_lump_sum_investment(SPXL_tuple, startdate, enddate, years, 10000000,
+                                                         inflation_rate,
+                                                         "Return_Simulation\\dump\\SPXL100_{}years_inflation_0percent_dump\\".format(
+                                                             years, inflation_rate),
+                                                         "Return_Simulation\\output\\SPXL100_{}years_inflation_0percent_output\\".format(
+                                                             years, inflation_rate),
                                                          asset_log_dir
                                                          )
     # データシートtuple, 開始日、終了日、投資年数、初期資産、インフレ率、dump格納先、output格納先、asset log格納先
@@ -280,8 +318,6 @@ if __name__ == '__main__':
                                      )
     # データシートtuple, 開始日、終了日、運用年数、初期資産、インフレ率、dump格納先、output格納先、asset log格納先
     '''
-
-
 
     print("end: {}".format(datetime.datetime.fromtimestamp(time.time()).strftime("%H:%M:%S")))
 

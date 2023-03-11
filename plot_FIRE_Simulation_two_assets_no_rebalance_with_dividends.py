@@ -18,6 +18,7 @@ SPX100_60years_inf_2percent_dump_dir = "FIRE_Simulation\\two_assets_no_rebalance
 
 out_dir = "graph_output\\FIRE_Simulation_two_assets_no_rebalance_with_dividends\\"
 
+
 def load_dump(dump_dir, *args):
     loaded_dic = {}
     for filename in args:
@@ -27,8 +28,8 @@ def load_dump(dump_dir, *args):
             print(f"{dump_dir}\\{filename} loaded: {object}")
     return loaded_dic
 
-def plot_success_rates_in_different_withdraw_rates_for_multiple_invest_years():
 
+def plot_success_rates_in_different_withdraw_rates_for_multiple_invest_years():
     loaded_dic_SPXL100_30years_inf_2percent = load_dump(SPXL100_30years_inf_2percent_dump_dir, "withdraw_rates",
                                                         "success_rates")
     loaded_dic_SPXL100_40years_inf_2percent = load_dump(SPXL100_40years_inf_2percent_dump_dir, "withdraw_rates",
@@ -63,8 +64,8 @@ def plot_success_rates_in_different_withdraw_rates_for_multiple_invest_years():
     pyplot.legend()
     pyplot.savefig(out_dir + "SPXL_withdraw_siumlation_multi_years.png")
 
-def plot_success_rates_in_different_withdraw_rates_with_multiple_ratio(asset1, asset2, withdraw_years, ymin=0):
 
+def plot_success_rates_in_different_withdraw_rates_with_multiple_ratio(asset1, asset2, withdraw_years, ymin=0):
     asset1_100_asset2_0_withdraw_years_inf_2percent_dump_dir = \
         f"FIRE_Simulation\\two_assets_no_rebalance_with_dividends\\{asset1}100_{asset2}0_{withdraw_years}years_inflation_2.0percent_dump\\"
     asset1_75_asset2_25_withdraw_years_inf_2percent_dump_dir = \
@@ -76,21 +77,25 @@ def plot_success_rates_in_different_withdraw_rates_with_multiple_ratio(asset1, a
     asset1_0_asset2_100_withdraw_years_inf_2percent_dump_dir = \
         f"FIRE_Simulation\\two_assets_no_rebalance_with_dividends\\{asset1}0_{asset2}100_{withdraw_years}years_inflation_2.0percent_dump\\"
 
-
-    loaded_dic_asset1_100_asset2_0_withdraw_years_inf_2percent= load_dump(asset1_100_asset2_0_withdraw_years_inf_2percent_dump_dir, "withdraw_rates",
-                                                        "success_rates")
-    loaded_dic_asset1_75_asset2_25_withdraw_years_inf_2percent = load_dump(asset1_75_asset2_25_withdraw_years_inf_2percent_dump_dir,
-                                                               "withdraw_rates",
-                                                               "success_rates")
-    loaded_dic_asset1_50_asset2_50_withdraw_years_inf_2percent = load_dump(asset1_50_asset2_50_withdraw_years_inf_2percent_dump_dir,
-                                                               "withdraw_rates",
-                                                               "success_rates")
-    loaded_dic_asset1_25_asset2_75_withdraw_years_inf_2percent = load_dump(asset1_25_asset2_75_withdraw_years_inf_2percent_dump_dir,
-                                                               "withdraw_rates",
-                                                               "success_rates")
-    loaded_dic_asset1_0_asset2_100_withdraw_years_inf_2percent = load_dump(asset1_0_asset2_100_withdraw_years_inf_2percent_dump_dir,
-                                                               "withdraw_rates",
-                                                               "success_rates")
+    loaded_dic_asset1_100_asset2_0_withdraw_years_inf_2percent = load_dump(
+        asset1_100_asset2_0_withdraw_years_inf_2percent_dump_dir, "withdraw_rates",
+        "success_rates")
+    loaded_dic_asset1_75_asset2_25_withdraw_years_inf_2percent = load_dump(
+        asset1_75_asset2_25_withdraw_years_inf_2percent_dump_dir,
+        "withdraw_rates",
+        "success_rates")
+    loaded_dic_asset1_50_asset2_50_withdraw_years_inf_2percent = load_dump(
+        asset1_50_asset2_50_withdraw_years_inf_2percent_dump_dir,
+        "withdraw_rates",
+        "success_rates")
+    loaded_dic_asset1_25_asset2_75_withdraw_years_inf_2percent = load_dump(
+        asset1_25_asset2_75_withdraw_years_inf_2percent_dump_dir,
+        "withdraw_rates",
+        "success_rates")
+    loaded_dic_asset1_0_asset2_100_withdraw_years_inf_2percent = load_dump(
+        asset1_0_asset2_100_withdraw_years_inf_2percent_dump_dir,
+        "withdraw_rates",
+        "success_rates")
     # plot
     fig = pyplot.figure(facecolor='w', linewidth=1, edgecolor='w', tight_layout=True)
     ax = fig.add_subplot(111, xlabel="Withdraw Rate", ylabel="Success Rate")
@@ -128,6 +133,7 @@ def plot_success_rates_in_different_withdraw_rates_with_multiple_ratio(asset1, a
             ha='center', va='center', rotation=30)
     pyplot.savefig(out_dir + f"{asset1}_{asset2}_withdraw_siumlation_{withdraw_years}_years.png")
 
+
 if __name__ == '__main__':
     starttime = time.time()
     print("start: {}".format(datetime.datetime.fromtimestamp(starttime).strftime("%H:%M:%S")))
@@ -143,7 +149,6 @@ if __name__ == '__main__':
         plot_success_rates_in_different_withdraw_rates_with_multiple_ratio("SPX", "BONDS", withdraw_years, ymin=0)
         plot_success_rates_in_different_withdraw_rates_with_multiple_ratio("SPXL", "SPX", withdraw_years, ymin=0)
         plot_success_rates_in_different_withdraw_rates_with_multiple_ratio("SSO", "SPX", withdraw_years, ymin=0)
-
 
     print("end: {}".format(datetime.datetime.fromtimestamp(time.time()).strftime("%H:%M:%S")))
     time1 = time.time()

@@ -5,17 +5,19 @@ import math
 import os
 import statistics
 import time
+from concurrent.futures import ProcessPoolExecutor
+
 import cnum
 import joblib
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 import tqdm as tqdm
 from dateutil.relativedelta import relativedelta
 
 SPXL_Sheets = r"Price Sheet\simulated_SPX_funds_1886-2023_daily.csv"
 SPX_Sheets = r"Price Sheet\simulated_SPX_funds_1886-2023_daily.csv"
 SSO_Sheets = r"Price Sheet\simulated_SSO_1886-2023_daily.csv"
-initial_asset = 1000*10000
+initial_asset = 1000 * 10000
 asset_log_dir = "FIRE_Simulation\\single_asset\\asset_log\\"
+
 
 def readCSV(path):
     list = []
@@ -25,6 +27,8 @@ def readCSV(path):
             # print([datetime.datetime.strptime(row['date'], "%Y/%m/%d"), float(row['SPXL'])])
             list.append(tuple([datetime.datetime.strptime(row['date'], "%Y/%m/%d"), float(row['price'])]))
     return tuple(list)
+
+
 def simulate_once_a_year_single(sheet, startdate: datetime, withdraw_years, initial_assets, withdraw_rate,
                                 inflation_rate=0):
     # 条件：最初の一カ月経過時点で初めてwithdraw_rateで資産を取り出す(最初の取り出しは行わない）
@@ -75,6 +79,8 @@ def simulate_once_a_year_single(sheet, startdate: datetime, withdraw_years, init
         if asset_min > current_asset:
             asset_min = current_asset
     return int(current_asset), int(asset_max), int(asset_min), current_years, datasets_years, datasets_assets
+
+
 def get_index(sheet, datetime: datetime):
     index = 0
     for row in sheet:
@@ -86,11 +92,15 @@ def get_index(sheet, datetime: datetime):
         return -1
     else:
         return index
+
+
 def canbe_simulated(sheet, startdate: datetime, withdraw_years):
     if startdate + relativedelta(years=withdraw_years) > sheet[-1][0]:
         return False  # 開始日付+継続年数(withdraw_years)のレコードがシートにないため-1を返して終了
     else:
         return True
+
+
 def simulate_once_a_year_multi(sheet, startdate: datetime, enddate: datetime, withdraw_years, initial_assets,
                                withdraw_rate, inflation_rate, asset_log_dir):
     # initialize
@@ -107,7 +117,7 @@ def simulate_once_a_year_multi(sheet, startdate: datetime, enddate: datetime, wi
     simulated_count = 0
     success_count = 0
     failure_count = 0
-    assets = [] #何年から始めて資産がどのくらい残ったか
+    assets = []  # 何年から始めて資産がどのくらい残ったか
     assets_log = []  # 試行毎の資産経過
     asset_maxs = []  # 施行毎に記録した資産最大値（途中経過含む）
     asset_mins = []
@@ -120,11 +130,18 @@ def simulate_once_a_year_multi(sheet, startdate: datetime, enddate: datetime, wi
 
     while canbe_simulated(sheet, current_date, withdraw_years) and (current_date < enddate):
         simulated_count += 1
-        print("case: {}, from:{}, initial asset: {}円, withdraw_rate: {:.1%}, {}".format(simulated_count, current_date.strftime("%Y/%m/%d"), cnum.jp(int(initial_asset)),
-                                                                    withdraw_rate, datetime.datetime.fromtimestamp(
-                time.time()).strftime("%H:%M:%S")), file=codecs.open(asset_logfile, "a", "utf-8"))
+        print("case: {}, from:{}, initial asset: {}円, withdraw_rate: {:.1%}, {}".format(simulated_count,
+                                                                                         current_date.strftime(
+                                                                                             "%Y/%m/%d"),
+                                                                                         cnum.jp(int(initial_asset)),
+                                                                                         withdraw_rate,
+                                                                                         datetime.datetime.fromtimestamp(
+                                                                                             time.time()).strftime(
+                                                                                             "%H:%M:%S")),
+              file=codecs.open(asset_logfile, "a", "utf-8"))
         asset, asset_max, asset_min, end_year, years, assets_log = \
-            simulate_once_a_year_single(sheet, current_date, withdraw_years, initial_assets, withdraw_rate, inflation_rate)
+            simulate_once_a_year_single(sheet, current_date, withdraw_years, initial_assets, withdraw_rate,
+                                        inflation_rate)
         # asset:最後に残った資産額, asset_max:運用期間に記録した最大資産, end_year：最後に終わった年数(成功したら30を返す、失敗の場合は30未満), years & assets:何年経過後の資産額
         if asset is not None:
             assets.append([current_date, withdraw_rate, withdraw_years, asset])
@@ -154,6 +171,8 @@ def simulate_once_a_year_multi(sheet, startdate: datetime, enddate: datetime, wi
             asset_mins.append(asset_min)
         current_date += relativedelta(days=1)
     return simulated_count, success_count, failure_count, assets, asset_maxs, asset_mins, asset_max_final, asset_best_startdate, asset_min_final, asset_worst_startdate
+
+
 def generate_simulation_datasets(sheet_tuple, startdate: datetime, enddate: datetime, withdraw_years, initial_asset,
                                  inflation_rate, dump_dir, out_dir, asset_log_dir):
     if not os.path.exists(dump_dir):
@@ -232,13 +251,18 @@ def generate_simulation_datasets(sheet_tuple, startdate: datetime, enddate: date
 
     return withdraw_rates, success_rates, assets_avg_list, assets_list, assets_min_list, assets_max_list
 
+
 def save_to_dump(dump_dir, **kwargs):  # "withdraw_rates" = withdrawrates  ([])
     for key in kwargs.keys():
         joblib.dump(kwargs[key], dump_dir + key + ".dump")
         # joblib.dump(withdraw_rates, dump_dir + "withdraw_rates.dump")
+
+
 def save_results_to_txt(out_dir, **kwargs):
     for key in kwargs.keys():
         print(kwargs[key], file=codecs.open(out_dir + "{}.txt".format(key), "w", "utf-8"))
+
+
 def load_dump(dump_dir, *args):
     loaded_dic = {}
     for filename in args:
@@ -249,6 +273,7 @@ def load_dump(dump_dir, *args):
         else:
             loaded_dic[filename] = []
     return loaded_dic
+
 
 if __name__ == '__main__':
     starttime = time.time()
@@ -270,12 +295,13 @@ if __name__ == '__main__':
         date + relativedelta(years=n)：dateから数えてn年後
     '''
 
-
     # SPXL Simulation
     for years in tqdm.tqdm(range(30, 70, 10)):
         generate_simulation_datasets(SPXL_tuple, startdate, enddate, years, 10000000, 0,
-                                     "FIRE_Simulation\\single_asset\\SPXL100_{}years_inflation_2percent_dump\\".format(years),
-                                     "FIRE_Simulation\\single_asset\\SPXL100_{}years_inflation_2percent_output\\".format(years),
+                                     "FIRE_Simulation\\single_asset\\SPXL100_{}years_inflation_2percent_dump\\".format(
+                                         years),
+                                     "FIRE_Simulation\\single_asset\\SPXL100_{}years_inflation_2percent_output\\".format(
+                                         years),
                                      asset_log_dir + "SPXL100_{}years_inflation_2percent_log\\".format(years)
                                      )
     # データシートtuple, 開始日、終了日、運用年数、初期資産、インフレ率、dump格納先、output格納先、asset log格納先
@@ -294,15 +320,19 @@ if __name__ == '__main__':
     # SPX Simulation
     for years in tqdm.tqdm(range(30, 70, 10)):
         generate_simulation_datasets(SPX_tuple, startdate, enddate, years, 10000000, 0.02,
-                                     "FIRE_Simulation\\single_asset\\SPX100_{}years_inflation_2percent_dump\\".format(years),
-                                     "FIRE_Simulation\\single_asset\\SPX100_{}years_inflation_2percent_output\\".format(years),
+                                     "FIRE_Simulation\\single_asset\\SPX100_{}years_inflation_2percent_dump\\".format(
+                                         years),
+                                     "FIRE_Simulation\\single_asset\\SPX100_{}years_inflation_2percent_output\\".format(
+                                         years),
                                      asset_log_dir + "SPX100_{}years_inflation_2percent_log\\".format(years)
                                      )
     # SSO Simulation
     for years in tqdm.tqdm(range(30, 70, 10)):
         generate_simulation_datasets(SSO_tuple, startdate, enddate, years, 10000000, 0,
-                                     "FIRE_Simulation\\single_asset\\SSO100_{}years_inflation_2percent_dump\\".format(years),
-                                     "FIRE_Simulation\\single_asset\\SSO100_{}years_inflation_2percent_output\\".format(years),
+                                     "FIRE_Simulation\\single_asset\\SSO100_{}years_inflation_2percent_dump\\".format(
+                                         years),
+                                     "FIRE_Simulation\\single_asset\\SSO100_{}years_inflation_2percent_output\\".format(
+                                         years),
                                      asset_log_dir + "SSO100_{}years_inflation_2percent_log\\".format(years)
                                      )
 

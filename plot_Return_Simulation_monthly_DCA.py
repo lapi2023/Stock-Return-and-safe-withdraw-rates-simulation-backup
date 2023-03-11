@@ -2,11 +2,14 @@ import datetime
 import os
 import statistics
 import time
+
 import pandas
-from stock_calculation import utils
 from matplotlib import pyplot
 
+from stock_calculation import utils
+
 out_dir = "graph_output/Return_Simulation/Return_Simulation_monthly_DCA/"
+
 
 def plot_return_histogram(ticker, invest_years):
     dump_dir = f"Return_Simulation/Return_Simulation_Timing/dollar_cost_averaging/dump/{ticker}_{invest_years}years/"
@@ -16,12 +19,13 @@ def plot_return_histogram(ticker, invest_years):
     # plot
     pyplot.hist(
         asset_list,
-        bins = 500,
+        bins=500,
     )
     pyplot.xlim()
 
     utils.make_dir(out_dir + "hist/")
     pyplot.savefig(out_dir + f"hist/{ticker}_{invest_years}years_hist.png")
+
 
 def plot_table(ticker, invest_years):
     def table_plot(df, title, outputPath):
@@ -51,20 +55,23 @@ def plot_table(ticker, invest_years):
         [f"{int(statistics.median(asset_list)):,}"],
         [f"{int(max(asset_list)):,}"],
         [f"{int(statistics.stdev(asset_list)):,}"],
-        [f"{statistics.mean(asset_list)/statistics.stdev(asset_list):,.2f}"],
+        [f"{statistics.mean(asset_list) / statistics.stdev(asset_list):,.2f}"],
         [asset_result_list[0][4]],
-        [f"{int(asset_result_list[0][2]/asset_result_list[0][4]):,}"],
+        [f"{int(asset_result_list[0][2] / asset_result_list[0][4]):,}"],
         [0]
     ]
     print(table_list)
     df = pandas.DataFrame(
         data=table_list,
-        index = ["min", "average", "median", "max","SD", "Sharpe Ratio(avg/SD)", "invested count", "avg. invested amount", "sold count"],
-        columns = ["DCA"]
-                     )
+        index=["min", "average", "median", "max", "SD", "Sharpe Ratio(avg/SD)", "invested count",
+               "avg. invested amount", "sold count"],
+        columns=["DCA"]
+    )
     utils.make_dir(out_dir + "table/")
     table_plot(df, f"{ticker} {invest_years} years, Dollar Cost Averaging\n"
-                   f"monthly_income: 1,000, data from 1886-2023", out_dir + f"table/{ticker}_{invest_years}_table.png", )
+                   f"monthly_income: 1,000, data from 1886-2023",
+               out_dir + f"table/{ticker}_{invest_years}_table.png", )
+
 
 if __name__ == '__main__':
     starttime = time.time()

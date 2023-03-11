@@ -3,6 +3,7 @@ import math
 import os
 import statistics
 import time
+
 import joblib
 import matplotlib
 from dateutil.relativedelta import relativedelta
@@ -23,7 +24,8 @@ def load_dump(dump_dir, *args):
             print("{} loaded: {}".format(filename, object))
     return loaded_dic
 
-def plot_return_by_invest_years(ticker, inflation_rate = 0):
+
+def plot_return_by_invest_years(ticker, inflation_rate=0):
     ticker_1year_dic = \
         load_dump(dump_dir + f"{ticker}100_1years_inflation_{inflation_rate * 100}percent_dump/",
                   "asset_result_list", "price_growth_rate_list")
@@ -58,7 +60,7 @@ def plot_return_by_invest_years(ticker, inflation_rate = 0):
     ticker_5years_max_growth_rate = math.pow(max(ticker_5years_dic["price_growth_rate_list"]) + 1, 1 / 5) - 1
     ticker_5years_min_growth_rate = math.pow(min(ticker_5years_dic["price_growth_rate_list"]) + 1, 1 / 5) - 1
     ticker_5years_med_growth_rate = math.pow(statistics.median(ticker_5years_dic["price_growth_rate_list"]) + 1,
-                                          1 / 5) - 1
+                                             1 / 5) - 1
 
     ticker_10years_max_growth_rate = math.pow(max(ticker_10years_dic["price_growth_rate_list"]) + 1, 1 / 10) - 1
     ticker_10years_min_growth_rate = math.pow(min(ticker_10years_dic["price_growth_rate_list"]) + 1, 1 / 10) - 1
@@ -67,11 +69,13 @@ def plot_return_by_invest_years(ticker, inflation_rate = 0):
 
     ticker_20years_max_growth_rate = math.pow(max(ticker_20years_dic["price_growth_rate_list"]) + 1, 1 / 20) - 1
     ticker_20years_min_growth_rate = math.pow(min(ticker_20years_dic["price_growth_rate_list"]) + 1, 1 / 20) - 1
-    ticker_20years_med_growth_rate = math.pow(statistics.median(ticker_20years_dic["price_growth_rate_list"]) + 1, 1 / 20) - 1
+    ticker_20years_med_growth_rate = math.pow(statistics.median(ticker_20years_dic["price_growth_rate_list"]) + 1,
+                                              1 / 20) - 1
 
     ticker_30years_max_growth_rate = math.pow(max(ticker_30years_dic["price_growth_rate_list"]) + 1, 1 / 30) - 1
     ticker_30years_min_growth_rate = math.pow(min(ticker_30years_dic["price_growth_rate_list"]) + 1, 1 / 30) - 1
-    ticker_30years_med_growth_rate = math.pow(statistics.median(ticker_30years_dic["price_growth_rate_list"]) + 1, 1 / 30) - 1
+    ticker_30years_med_growth_rate = math.pow(statistics.median(ticker_30years_dic["price_growth_rate_list"]) + 1,
+                                              1 / 30) - 1
 
     ticker_40years_max_growth_rate = math.pow(max(ticker_40years_dic["price_growth_rate_list"]) + 1, 1 / 40) - 1
     ticker_40years_min_growth_rate = math.pow(min(ticker_40years_dic["price_growth_rate_list"]) + 1, 1 / 40) - 1
@@ -167,19 +171,17 @@ def plot_return_by_invest_years(ticker, inflation_rate = 0):
                                         ticker_50years_dic["price_growth_rate_list"])))
     # plot終了
 
+
 if __name__ == '__main__':
     starttime = time.time()
     print("start: {}".format(datetime.datetime.fromtimestamp(starttime).strftime("%H:%M:%S")))
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
-
     plot_return_by_invest_years("SPX")
     plot_return_by_invest_years("SPXL")
     plot_return_by_invest_years("SSO")
 
-
     print("end: {}".format(datetime.datetime.fromtimestamp(time.time()).strftime("%H:%M:%S")))
     time1 = time.time()
     print("経過秒数：{}".format(int(time1 - starttime)))
-

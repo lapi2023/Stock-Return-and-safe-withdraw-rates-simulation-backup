@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 from stock_calculation import utils
 
-PJ_dir = "Return_Simulation/Return_Simulation_Timing/buy_after_falling/"
+PJ_dir = "Return_Simulation/Return_Simulation_Timing/buy_on_golden_cross/"
 asset_log_dir = PJ_dir + "asset_log/"
 dump_dir = PJ_dir + "dump/"
 out_dir = PJ_dir + "output/"
@@ -18,38 +18,36 @@ inflation_rate = 0
 monthly_income = 1000
 
 
-def calculate_return_monthly_buy_after_falling_single_try(sheet_tuple, change_rate_threshold_low,
-                                                          change_rate_threshold_high, startdate, invest_years,
-                                                          monthly_income, inflation_rate=0):
+def calculate_return_monthly_buy_on_golden_cross_single_try(sheet_tuple, df, SMA_short, SMA_long, startdate, invest_years,
+                                                        monthly_income, inflation_rate=0):
     startdate = utils.return_calculatable_date(sheet_tuple, startdate)
     current_month = startdate
     invested_asset = 0
     invested_months = 0
-    wallet = 0
-    elapsed_months = 0
+    wallet = monthly_income  # 最初は財布に貯めておく
+    elapsed_months = 1
     sold_count = 0
-    wallet_count = 0
+    wallet_count = 1
+    invested_amount = 0
     n1_price = sheet_tuple[utils.get_index(sheet_tuple, current_month)][1]
+    golden_cross_dates = []
+    dead_cross_dates = []
     while utils.canbe_simulated_monthly(sheet_tuple, current_month, 1) and elapsed_months / 12 < invest_years:
-        if current_month == sheet_tuple[0][0]:  # シート一番最初の月は投資せずwalletに貯めておく
-            wallet += monthly_income
-            wallet_count += 1
-            current_month = utils.return_calculatable_date(sheet_tuple, current_month + relativedelta(months=1))
-            elapsed_months += 1
-            continue
         n2_price = sheet_tuple[utils.get_index(sheet_tuple, current_month)][1]
         growth_rate = (n2_price - n1_price) / n1_price
         invested_asset = int(invested_asset * (1 + growth_rate) * (1 - inflation_rate))
-        if growth_rate >= change_rate_threshold_high:
-            wallet += monthly_income + invested_asset
-            wallet_count += 1
-            invested_asset = 0
-            sold_count += 1
-        elif growth_rate < change_rate_threshold_low:
+
+        if utils.cross_type(df, SMA_short, SMA_long, current_month, sheet_tuple) == "GC":
             invested_asset += monthly_income + wallet
             wallet = 0
             invested_months += 1
             invested_amount = (wallet_count + invested_months) * monthly_income
+            golden_cross_dates.append(current_month)
+        elif utils.cross_type(df, SMA_short, SMA_long, current_month, sheet_tuple) == "DC":
+            wallet += monthly_income + invested_asset
+            invested_asset = 0
+            sold_count += 1
+            dead_cross_dates.append(current_month)
         else:
             wallet += monthly_income
             wallet_count += 1
@@ -58,22 +56,22 @@ def calculate_return_monthly_buy_after_falling_single_try(sheet_tuple, change_ra
         current_month = utils.return_calculatable_date(sheet_tuple,
                                                        (current_month + relativedelta(months=1)).replace(day=1))
         elapsed_months += 1
-    return invested_amount, invested_asset, wallet, invested_months, sold_count, elapsed_months
+    return invested_amount, invested_asset, wallet, invested_months, sold_count, elapsed_months, golden_cross_dates, dead_cross_dates
 
 
-def calculate_return_monthly_buy_after_falling_iterate(ticker, change_rate_threshold_low, change_rate_threshold_high,
-                                                       startdate: datetime, enddate: datetime, invest_years,
-                                                       monthly_income, inflation_rate=0, asset_log_dir=""):
+def calculate_return_monthly_buy_on_golden_cross_iterate(ticker, df, SMA_short, SMA_long, startdate: datetime,
+                                                     enddate: datetime, invest_years, monthly_income, inflation_rate=0,
+                                                     asset_log_dir=""):
     """
-    calculate_return_monthly_buy_after_falling_single_try(sheet_tuple, change_rate_threshold_low, change_rate_threshold_high, startdate, invest_years, monthly_income, inflation_rate=0):
+    calculate_return_monthly_buy_on_golden_cross_single_try(sheet_tuple, change_rate_threshold_low, change_rate_threshold_high, startdate, invest_years, monthly_income, inflation_rate=0):
     iterate monthly
     """
     # initialize
     utils.make_dir(asset_log_dir)
     if asset_log_dir != "":
-        asset_logfile = asset_log_dir + "{}_start_{}_invest_{}years_inflation_{:.1f}percent_changeRateLow_{}_changeRateHigh_{}.txt".format(
+        asset_logfile = asset_log_dir + "{}_start_{}_invest_{}years_inflation_{:.1f}percent_SMAshort_{}_SMAlong_{}.txt".format(
             ticker, startdate.strftime("%Y%m%d"), invest_years, inflation_rate * 100,
-            change_rate_threshold_low, change_rate_threshold_high
+            SMA_short, SMA_long
         )
         if (os.path.isfile(asset_logfile)):
             os.remove(asset_logfile)
@@ -97,9 +95,9 @@ def calculate_return_monthly_buy_after_falling_iterate(ticker, change_rate_thres
                                                    datetime.datetime.fromtimestamp(
                                                        time.time()).strftime("%H:%M:%S")),
               file=codecs.open(asset_logfile, "a", "utf-8"))
-        invested_amount, invested_asset, wallet, invested_months, sold_count, elapsed_months = \
-            calculate_return_monthly_buy_after_falling_single_try(
-                sheet_tuple, change_rate_threshold_low, change_rate_threshold_high, current_date, invest_years,
+        invested_amount, invested_asset, wallet, invested_months, sold_count, elapsed_months, golden_cross_dates, dead_cross_dates = \
+            calculate_return_monthly_buy_on_golden_cross_single_try(
+                sheet_tuple, df, SMA_short, SMA_long, current_date, invest_years,
                 monthly_income, inflation_rate)
 
         asset_result_list.append(
@@ -117,19 +115,17 @@ def calculate_return_monthly_buy_after_falling_iterate(ticker, change_rate_thres
                   file=codecs.open(asset_logfile, "a", "utf-8"))
         current_date = utils.return_calculatable_date(sheet_tuple,
                                                       (current_date + relativedelta(months=1)).replace(day=1))
-    return asset_result_list, asset_list, invested_amount_list, invested_months_list, sold_count_list
+    return asset_result_list, asset_list, invested_amount_list, invested_months_list, sold_count_list, golden_cross_dates, dead_cross_dates
 
-
-def generate_dumpfiles_monthly_buy_after_selling(
-        ticker, change_rate_threshold_low, change_rate_threshold_high, startdate: datetime, enddate, invest_years,
-        monthly_income,
+def generate_dumpfiles_monthly_buy_on_golden_cross(
+        ticker, df, SMA_short, SMA_long, startdate: datetime, enddate, invest_years, monthly_income,
         inflation_rate=0, dump_dir="", out_dir="", asset_log_dir=""):
     utils.make_dir(dump_dir)
     utils.make_dir(out_dir)
-    asset_result_list, asset_list, invested_amount_list, invested_months_list, sold_count_list = \
-        calculate_return_monthly_buy_after_falling_iterate(
-            ticker, change_rate_threshold_low, change_rate_threshold_high, startdate, enddate, invest_years,
-            monthly_income, inflation_rate, asset_log_dir
+    asset_result_list, asset_list, invested_amount_list, invested_months_list, sold_count_list, golden_cross_dates, dead_cross_dates = \
+        calculate_return_monthly_buy_on_golden_cross_iterate(
+            ticker, df, SMA_short, SMA_long, startdate, enddate, invest_years, monthly_income, inflation_rate,
+            asset_log_dir
         )
 
     if dump_dir != "":
@@ -147,7 +143,9 @@ def generate_dumpfiles_monthly_buy_after_selling(
                                   asset_list=asset_list,
                                   invested_amount_list=invested_amount_list,
                                   invested_months_list=invested_months_list,
-                                  sold_count_list=sold_count_list
+                                  sold_count_list=sold_count_list,
+                                  golden_cross_dates=golden_cross_dates,
+                                  dead_cross_dates=dead_cross_dates
                                   )
     return asset_result_list, asset_list, invested_amount_list, invested_months_list, sold_count_list
 
@@ -155,23 +153,23 @@ def generate_dumpfiles_monthly_buy_after_selling(
 if __name__ == '__main__':
     starttime = time.time()
     print("start: {}".format(datetime.datetime.fromtimestamp(starttime).strftime("%H:%M:%S")))
+    SMA_short_long_list = [(5, 25), (25, 75), (50, 200)]
 
     SPX_tuple = utils.get_tuple_1886_monthly("SPX")
-    startdate = SPX_tuple[0][0]
+
+    startdate = utils.return_calculatable_date(SPX_tuple,
+                                               SPX_tuple[0][0] + relativedelta(months=6))  # SMA長期のために6か月をバッファーとする
     enddate = SPX_tuple[-1][0]
-    change_rate_threshold_low_list = [i / 100 for i in range(-1, -11, -1)]
-    change_rate_threshold_high_list = [i / 100 for i in range(1, 11, 1)] + [999]  # 999 means never sell
-    for ticker in ["SPX", "SPXL", "SSO"]:
-        for invest_years in tqdm.tqdm([30, 10, 20, 40, 50],
-                                      desc=f"{ticker}, calculate invest years"):
-            for change_rate_threshold_low in tqdm.tqdm(change_rate_threshold_low_list, desc=f"calculate by lows"):
-                for change_rate_threshold_high in change_rate_threshold_high_list:
-                    generate_dumpfiles_monthly_buy_after_selling(
-                        ticker, change_rate_threshold_low, change_rate_threshold_high, startdate, enddate, invest_years,
-                        monthly_income, inflation_rate,
-                        dump_dir + f"{ticker}_{invest_years}years_changeRateLow_{change_rate_threshold_low}_changeRateHigh_{change_rate_threshold_high}/",
-                        out_dir + f"{ticker}_{invest_years}years_changeRateLow_{change_rate_threshold_low}_changeRateHigh_{change_rate_threshold_high}/",
-                        asset_log_dir)
+    for invest_years in tqdm.tqdm([30, 10, 20, 40, 50]):
+        for ticker in ["SPX", "SPXL", "SSO"]:
+            for SMA_short, SMA_long in SMA_short_long_list:
+                SPX_daily_dataframe = utils.get_dataframe_1886_daily("SPX", SMA_short, SMA_long)
+                generate_dumpfiles_monthly_buy_on_golden_cross(
+                    ticker, SPX_daily_dataframe, SMA_short, SMA_long, startdate, enddate, invest_years, monthly_income,
+                    inflation_rate,
+                    dump_dir + f"{ticker}_{invest_years}years_SMAshort_{SMA_short}_SMAlong_{SMA_long}/",
+                    out_dir + f"{ticker}_{invest_years}years_SMAshort_{SMA_short}_SMAlong_{SMA_long}/",
+                    asset_log_dir)
 
     print("end: {}".format(datetime.datetime.fromtimestamp(time.time()).strftime("%H:%M:%S")))
 
